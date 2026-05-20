@@ -1,4 +1,8 @@
         * { cursor: none !important; }
+        @media (hover: none) and (pointer: coarse) {
+            * { cursor: auto !important; }
+            #cursor-dot, #cursor-frame { display: none !important; }
+        }
         html, body { margin: 0; background: #050505; color: #EAEAEA; overflow-x: hidden; }
         
         /* Cinematic Film Grain Overlay */

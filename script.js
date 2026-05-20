@@ -139,16 +139,19 @@ const initThree = () => {
 
 /* --- CURSOR --- */
 const initCursor = () => {
-    const dot = document.querySelector('#cursor-dot');
-    const frame = document.querySelector('#cursor-frame');
-    window.addEventListener('mousemove', e => {
-        gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.1 });
-        gsap.to(frame, { x: e.clientX, y: e.clientY, duration: 0.4, ease: "power2.out" });
-    });
-    document.querySelectorAll('a, button, input').forEach(el => {
-        el.addEventListener('mouseenter', () => gsap.to(frame, { scale: 1.8, backgroundColor: 'rgba(0,242,254,0.1)', borderColor: '#00F2FE' }));
-        el.addEventListener('mouseleave', () => gsap.to(frame, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(0,242,254,0.5)' }));
-    });
+    // Only initialize custom cursor on desktop devices
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        const dot = document.querySelector('#cursor-dot');
+        const frame = document.querySelector('#cursor-frame');
+        window.addEventListener('mousemove', e => {
+            gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.1 });
+            gsap.to(frame, { x: e.clientX, y: e.clientY, duration: 0.4, ease: "power2.out" });
+        });
+        document.querySelectorAll('a, button, input').forEach(el => {
+            el.addEventListener('mouseenter', () => gsap.to(frame, { scale: 1.8, backgroundColor: 'rgba(0,242,254,0.1)', borderColor: '#00F2FE' }));
+            el.addEventListener('mouseleave', () => gsap.to(frame, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(0,242,254,0.5)' }));
+        });
+    }
 };
 
 /* --- GSAP ANIMATIONS --- */
@@ -209,4 +212,50 @@ window.onload = () => {
     initThree();
     initCursor();
     initAnims();
+    initMobileMenu();
+};
+
+/* --- MOBILE MENU --- */
+const initMobileMenu = () => {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            gsap.fromTo(mobileMenu.children[1].children,
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 0.7, duration: 0.4, stagger: 0.1, ease: "power2.out" }
+            );
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            gsap.to(mobileMenu, {
+                opacity: 0,
+                duration: 0.3,
+                onComplete: () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    mobileMenu.style.opacity = 1;
+                }
+            });
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                gsap.to(mobileMenu, {
+                    opacity: 0,
+                    duration: 0.3,
+                    onComplete: () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('flex');
+                        mobileMenu.style.opacity = 1;
+                    }
+                });
+            });
+        });
+    }
 };

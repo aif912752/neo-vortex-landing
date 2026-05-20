@@ -43,19 +43,47 @@
     <div id="cursor-frame"></div>
 
     <!-- HEADER -->
-    <nav class="fixed top-0 w-full z-50 p-6 md:p-10 flex justify-between items-center mix-blend-difference">
-        <a href="#hero" class="font-futuristic font-bold text-xl md:text-2xl tracking-tighter hover:text-neonCyan transition-all">NEO<span class="text-neonCyan">_</span>VORTEX</a>
-        <div class="hidden lg:flex gap-12 text-[10px] font-futuristic tracking-[0.4em] uppercase opacity-50">
+    <nav class="fixed top-0 w-full z-50 p-4 md:p-6 lg:p-10 flex justify-between items-center mix-blend-difference">
+        <a href="#hero" class="font-futuristic font-bold text-lg md:text-xl lg:text-2xl tracking-tighter hover:text-neonCyan transition-all">NEO<span class="text-neonCyan">_</span>VORTEX</a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex gap-8 md:gap-12 text-[9px] md:text-[10px] font-futuristic tracking-[0.3em] md:tracking-[0.4em] uppercase opacity-50">
             <a href="#philosophy" class="nav-link hover:text-neonCyan transition-all">Heritage</a>
             <a href="#aero" class="nav-link hover:text-neonCyan transition-all">Aero</a>
             <a href="#interior" class="nav-link hover:text-neonCyan transition-all">Cockpit</a>
             <a href="#intelligence" class="nav-link hover:text-neonCyan transition-all">Neural</a>
             <a href="#configurator" class="nav-link hover:text-neonCyan transition-all">Configure</a>
         </div>
-        <button class="glass-card px-8 py-3 text-[9px] font-futuristic uppercase tracking-widest border border-white/10 hover:bg-white hover:text-black transition-all">
+        <button class="hidden md:block glass-card px-6 md:px-8 py-2 md:py-3 text-[8px] md:text-[9px] font-futuristic uppercase tracking-widest border border-white/10 hover:bg-white hover:text-black transition-all">
             Reserve
         </button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 hidden flex-col items-center justify-center gap-8 lg:hidden">
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-white p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="flex flex-col gap-8 text-center">
+            <a href="#philosophy" class="mobile-nav-link font-futuristic text-2xl tracking-[0.4em] uppercase opacity-70 hover:opacity-100 hover:text-neonCyan transition-all">Heritage</a>
+            <a href="#aero" class="mobile-nav-link font-futuristic text-2xl tracking-[0.4em] uppercase opacity-70 hover:opacity-100 hover:text-neonCyan transition-all">Aero</a>
+            <a href="#interior" class="mobile-nav-link font-futuristic text-2xl tracking-[0.4em] uppercase opacity-70 hover:opacity-100 hover:text-neonCyan transition-all">Cockpit</a>
+            <a href="#intelligence" class="mobile-nav-link font-futuristic text-2xl tracking-[0.4em] uppercase opacity-70 hover:opacity-100 hover:text-neonCyan transition-all">Neural</a>
+            <a href="#configurator" class="mobile-nav-link font-futuristic text-2xl tracking-[0.4em] uppercase opacity-70 hover:opacity-100 hover:text-neonCyan transition-all">Configure</a>
+        </div>
+        <button class="mt-8 glass-card px-12 py-4 text-xs font-futuristic uppercase tracking-widest border border-white/10 hover:bg-white hover:text-black transition-all">
+            Reserve
+        </button>
+    </div>
 
     <!-- 01: HERO -->
     <section id="hero" class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
@@ -64,11 +92,11 @@
         </video>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-obsidian/20 to-obsidian z-0"></div>
         
-        <div class="relative z-10 text-center pointer-events-none">
-            <p id="hero-pre" class="font-futuristic text-neonCyan text-[10px] tracking-[1.5em] uppercase opacity-0 mb-6">Redefining Physics</p>
+        <div class="relative z-10 text-center pointer-events-none px-4">
+            <p id="hero-pre" class="font-futuristic text-neonCyan text-[8px] md:text-[10px] tracking-[1.2em] md:tracking-[1.5em] uppercase opacity-0 mb-4 md:mb-6">Redefining Physics</p>
             <h1 class="section-title font-futuristic font-bold uppercase tracking-tighter">
-                <div class="overflow-hidden h-fit"><span class="hero-main-title block">NEO</span></div>
-                <div class="overflow-hidden h-fit"><span class="hero-main-title block text-stroke">VORTEX</span></div>
+                <div class="overflow-hidden h-fit"><span class="hero-main-title block text-5xl md:text-[12rem]">NEO</span></div>
+                <div class="overflow-hidden h-fit"><span class="hero-main-title block text-stroke text-5xl md:text-[12rem]">VORTEX</span></div>
             </h1>
         </div>
 
@@ -78,52 +106,52 @@
     </section>
 
     <!-- 02: PHILOSOPHY -->
-    <section id="philosophy" class="relative min-h-screen w-full flex items-center justify-center py-32 px-10 overflow-hidden">
+    <section id="philosophy" class="relative min-h-screen w-full flex items-center justify-center py-16 md:py-32 px-6 md:px-10 overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-10 parallax-bg" data-speed="0.2">
             <img src="./assets/philosophy-bg.jpg" alt="Carbon" class="w-full h-full object-cover">
         </div>
         <div class="relative z-10 max-w-6xl w-full">
-            <span class="font-futuristic text-neonCyan text-[10px] tracking-widest block mb-8 uppercase opacity-50 reveal-up">01 / Concept</span>
-            <h2 class="font-futuristic text-4xl md:text-8xl font-bold leading-[0.9] mb-12 reveal-up">
+            <span class="font-futuristic text-neonCyan text-[8px] md:text-[10px] tracking-widest block mb-6 md:mb-8 uppercase opacity-50 reveal-up">01 / Concept</span>
+            <h2 class="font-futuristic text-3xl md:text-4xl lg:text-8xl font-bold leading-[0.9] mb-8 md:mb-12 reveal-up">
                 A SYMPHONY OF<br> <span class="text-neonCyan italic">SILENT POWER.</span>
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-                <p class="text-platinum/40 text-xl font-light leading-relaxed reveal-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+                <p class="text-platinum/40 text-base md:text-xl font-light leading-relaxed reveal-up">
                     NEO-VORTEX is not a car. It is a kinetic sculpture born from the intersection of dark matter philosophy and pure electrical propulsion. Every line is an intentional manipulation of reality.
                 </p>
                 <div class="reveal-up">
-                    <div class="w-full h-[1px] bg-white/10 mb-8"></div>
-                    <p class="font-futuristic text-xs tracking-[0.3em] text-platinum/60">"WE DON'T BUILD FOR THE MASSES. WE BUILD FOR THE MOMENT PHYSICS BREAKS."</p>
+                    <div class="w-full h-[1px] bg-white/10 mb-6 md:mb-8"></div>
+                    <p class="font-futuristic text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.3em] text-platinum/60">"WE DON'T BUILD FOR THE MASSES. WE BUILD FOR THE MOMENT PHYSICS BREAKS."</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 03: AERODYNAMIC MASTERY (NEW) -->
-    <section id="aero" class="relative min-h-screen w-full py-32 px-10 md:px-24 bg-[#080808]">
-        <div class="flex flex-col md:flex-row gap-20 items-center">
+    <section id="aero" class="relative min-h-screen w-full py-16 md:py-32 px-6 md:px-10 lg:px-24 bg-[#080808]">
+        <div class="flex flex-col md:flex-row gap-12 md:gap-20 items-center">
             <div class="w-full md:w-1/2 relative overflow-hidden rounded-lg group">
-                <div class="absolute -inset-10 bg-cyan-500/10 blur-[120px] rounded-full"></div>
+                <div class="absolute -inset-5 md:-inset-10 bg-cyan-500/10 blur-[80px] md:blur-[120px] rounded-full"></div>
                 <!-- Aero Video -->
                 <video autoplay loop muted playsinline poster="./assets/aero-wind.png" class="relative z-10 w-full grayscale opacity-80 group-hover:grayscale-0 transition-all duration-1000 aero-visual">
                     <source src="./assets/aero-wind.mp4" type="video/mp4">
                 </video>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-futuristic text-stroke text-8xl md:text-[15rem] opacity-20 pointer-events-none whitespace-nowrap z-20">0.19 CD</div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-futuristic text-stroke text-5xl md:text-8xl lg:text-[15rem] opacity-20 pointer-events-none whitespace-nowrap z-20">0.19 CD</div>
             </div>
-            <div class="w-full md:w-1/2 space-y-12">
-                <span class="font-futuristic text-cyberPurple text-[10px] tracking-widest block uppercase opacity-50 reveal-up">02 / Engineering</span>
-                <h3 class="font-futuristic text-5xl md:text-7xl leading-none reveal-up">AERO<br><span class="text-neonCyan">SCULPTING</span></h3>
-                <p class="text-platinum/40 font-light text-lg reveal-up">
+            <div class="w-full md:w-1/2 space-y-8 md:space-y-12">
+                <span class="font-futuristic text-cyberPurple text-[8px] md:text-[10px] tracking-widest block uppercase opacity-50 reveal-up">02 / Engineering</span>
+                <h3 class="font-futuristic text-4xl md:text-5xl lg:text-7xl leading-none reveal-up">AERO<br><span class="text-neonCyan">SCULPTING</span></h3>
+                <p class="text-platinum/40 font-light text-base md:text-lg reveal-up">
                     Using Active-Morphing surfaces, the NEO-VORTEX body panels physically shift at high speeds to optimize downforce. The air doesn't hit the car; it obeys it.
                 </p>
-                <div class="flex gap-10 reveal-up">
+                <div class="flex gap-8 md:gap-10 reveal-up">
                     <div class="text-center">
-                        <span class="block font-futuristic text-2xl">400KG</span>
-                        <span class="text-[8px] uppercase tracking-widest text-white/30">Max Downforce</span>
+                        <span class="block font-futuristic text-xl md:text-2xl">400KG</span>
+                        <span class="text-[7px] md:text-[8px] uppercase tracking-widest text-white/30">Max Downforce</span>
                     </div>
                     <div class="text-center">
-                        <span class="block font-futuristic text-2xl">VOXEL</span>
-                        <span class="text-[8px] uppercase tracking-widest text-white/30">Air Intake</span>
+                        <span class="block font-futuristic text-xl md:text-2xl">VOXEL</span>
+                        <span class="text-[7px] md:text-[8px] uppercase tracking-widest text-white/30">Air Intake</span>
                     </div>
                 </div>
             </div>
@@ -131,29 +159,29 @@
     </section>
 
     <!-- 04: THE INNER SANCTUM -->
-    <section id="interior" class="relative min-h-screen w-full flex flex-col items-center justify-center py-32 bg-obsidian border-y border-white/5">
+    <section id="interior" class="relative min-h-screen w-full flex flex-col items-center justify-center py-16 md:py-32 bg-obsidian border-y border-white/5">
         <div class="absolute left-10 top-1/2 -translate-y-1/2 hidden lg:block">
             <div class="h-64 w-[1px] bg-white/10 relative">
                 <div class="absolute top-0 left-0 w-full bg-neonCyan progress-bar"></div>
             </div>
         </div>
-        
-        <div class="max-w-7xl w-full px-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end mb-20">
+
+        <div class="max-w-7xl w-full px-6 md:px-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-end mb-12 md:mb-20">
                 <div class="lg:col-span-8">
-                    <h2 class="font-futuristic text-5xl md:text-9xl tracking-tighter reveal-up">THE <span class="text-stroke">INNER</span><br>SANCTUM</h2>
+                    <h2 class="font-futuristic text-4xl md:text-5xl lg:text-9xl tracking-tighter reveal-up">THE <span class="text-stroke">INNER</span><br>SANCTUM</h2>
                 </div>
-                <div class="lg:col-span-4 pb-4">
-                    <p class="text-platinum/40 font-light reveal-up">A neural-sync cockpit that anticipates your every intent before you even touch the controls.</p>
+                <div class="lg:col-span-4 pb-2 md:pb-4">
+                    <p class="text-platinum/40 font-light text-sm md:text-base reveal-up">A neural-sync cockpit that anticipates your every intent before you even touch the controls.</p>
                 </div>
             </div>
-            
+
             <div class="w-full aspect-video relative overflow-hidden group reveal-up">
                 <img src="./assets/interior.jpeg" alt="Interior" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s] ease-out">
                 <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
-                <div class="absolute bottom-10 left-10 glass-card p-6 md:p-10 max-w-sm">
-                    <h4 class="font-futuristic text-neonCyan text-xs mb-4 uppercase">Neural Interface</h4>
-                    <p class="text-xs text-platinum/60 leading-relaxed font-light italic">
+                <div class="absolute bottom-6 md:bottom-10 left-6 md:left-10 glass-card p-4 md:p-6 lg:p-10 max-w-sm">
+                    <h4 class="font-futuristic text-neonCyan text-[10px] md:text-xs mb-3 md:mb-4 uppercase">Neural Interface</h4>
+                    <p class="text-[10px] md:text-xs text-platinum/60 leading-relaxed font-light italic">
                         "The interface is invisible. It feels less like driving and more like thinking your way through the world."
                     </p>
                 </div>
@@ -162,64 +190,64 @@
     </section>
 
     <!-- 05: THE NEURAL BRAIN (NEW) -->
-    <section id="intelligence" class="relative min-h-screen w-full py-32 px-10 bg-[#050505] flex items-center overflow-hidden">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 w-full max-w-7xl mx-auto items-center">
+    <section id="intelligence" class="relative min-h-screen w-full py-16 md:py-32 px-6 md:px-10 bg-[#050505] flex items-center overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 w-full max-w-7xl mx-auto items-center">
             <div class="order-2 md:order-1">
-                <span class="font-futuristic text-neonCyan text-[10px] tracking-widest block uppercase opacity-50 mb-8 reveal-up">03 / Intelligence</span>
-                <h2 class="font-futuristic text-5xl md:text-7xl leading-tight mb-10 reveal-up">BIOMETRIC<br><span class="text-cyberPurple">NEURAL LINK</span></h2>
-                <ul class="space-y-8 reveal-up">
-                    <li class="flex gap-6 items-start">
-                        <span class="font-futuristic text-neonCyan text-xs">01</span>
+                <span class="font-futuristic text-neonCyan text-[8px] md:text-[10px] tracking-widest block uppercase opacity-50 mb-6 md:mb-8 reveal-up">03 / Intelligence</span>
+                <h2 class="font-futuristic text-3xl md:text-5xl lg:text-7xl leading-tight mb-8 md:mb-10 reveal-up">BIOMETRIC<br><span class="text-cyberPurple">NEURAL LINK</span></h2>
+                <ul class="space-y-6 md:space-y-8 reveal-up">
+                    <li class="flex gap-4 md:gap-6 items-start">
+                        <span class="font-futuristic text-neonCyan text-xs md:text-sm">01</span>
                         <div>
-                            <h5 class="font-futuristic text-sm mb-2">PULSE SYNC</h5>
-                            <p class="text-white/40 text-sm font-light">Suspension and throttle mapping that adapts to your heart rate in real-time.</p>
+                            <h5 class="font-futuristic text-xs md:text-sm mb-2">PULSE SYNC</h5>
+                            <p class="text-white/40 text-xs md:text-sm font-light">Suspension and throttle mapping that adapts to your heart rate in real-time.</p>
                         </div>
                     </li>
-                    <li class="flex gap-6 items-start">
-                        <span class="font-futuristic text-neonCyan text-xs">02</span>
+                    <li class="flex gap-4 md:gap-6 items-start">
+                        <span class="font-futuristic text-neonCyan text-xs md:text-sm">02</span>
                         <div>
-                            <h5 class="font-futuristic text-sm mb-2">PREDICTIVE AI</h5>
-                            <p class="text-white/40 text-sm font-light">250 Million calculations per second to ensure safety without intruding on performance.</p>
+                            <h5 class="font-futuristic text-xs md:text-sm mb-2">PREDICTIVE AI</h5>
+                            <p class="text-white/40 text-xs md:text-sm font-light">250 Million calculations per second to ensure safety without intruding on performance.</p>
                         </div>
                     </li>
                 </ul>
             </div>
             <div class="order-1 md:order-2 relative flex justify-center">
-                <div class="w-80 h-80 md:w-[35rem] md:h-[35rem] border border-white/5 rounded-full flex items-center justify-center relative intel-circle">
+                <div class="w-48 h-48 md:w-80 md:h-80 lg:w-[35rem] lg:h-[35rem] border border-white/5 rounded-full flex items-center justify-center relative intel-circle">
                     <div class="absolute inset-0 border border-neonCyan/20 rounded-full animate-pulse"></div>
-                    <div class="w-64 h-64 md:w-[25rem] md:h-[25rem] border border-white/10 rounded-full flex items-center justify-center overflow-hidden">
+                    <div class="w-40 h-40 md:w-64 md:h-64 lg:w-[25rem] lg:h-[25rem] border border-white/10 rounded-full flex items-center justify-center overflow-hidden">
                         <img src="./assets/neural-chip.png" alt="Neural Chip" class="w-[80%] h-auto z-10 neural-chip-visual">
                     </div>
-                    <div class="absolute font-futuristic text-[8px] text-neonCyan tracking-[1em] animate-spin-slow">NEURAL_PROCESSING_ACTIVE</div>
+                    <div class="absolute font-futuristic text-[6px] md:text-[8px] text-neonCyan tracking-[0.8em] md:tracking-[1em] animate-spin-slow">NEURAL_PROCESSING_ACTIVE</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 06: CONFIGURATOR -->
-    <section id="configurator" class="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#0a0a0a] py-32 overflow-hidden">
-        <div class="text-center z-10 mb-20 reveal-up">
-            <span class="font-futuristic text-platinum/30 text-[10px] tracking-widest block uppercase mb-4">Personalization</span>
-            <h2 class="font-futuristic text-4xl md:text-7xl uppercase tracking-widest">DESIGN YOUR <span id="color-name" class="text-neonCyan transition-colors duration-500 italic">CYAN</span></h2>
-        </div>
-        
-        <div class="relative w-full max-w-6xl flex items-center justify-center mb-16 z-10 reveal-up">
-             <div class="absolute inset-0 opacity-20 transition-colors duration-1000 blur-[150px]" id="glow-bg" style="background-color: #00F2FE;"></div>
-             <img id="car-preview" src="./assets/car-base-cyan.png" alt="Config" class="w-[90%] md:w-[75%] h-auto object-contain z-10 drop-shadow-[0_40px_80px_rgba(0,0,0,1)] transition-all duration-500 hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1200&blend=00F2FE&blend-mode=multiply'">
+    <section id="configurator" class="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#0a0a0a] py-16 md:py-32 overflow-hidden">
+        <div class="text-center z-10 mb-12 md:mb-20 px-4 reveal-up">
+            <span class="font-futuristic text-platinum/30 text-[8px] md:text-[10px] tracking-widest block uppercase mb-4">Personalization</span>
+            <h2 class="font-futuristic text-2xl md:text-4xl lg:text-7xl uppercase tracking-widest">DESIGN YOUR <span id="color-name" class="text-neonCyan transition-colors duration-500 italic">CYAN</span></h2>
         </div>
 
-        <div class="flex gap-12 z-20 reveal-up">
+        <div class="relative w-full max-w-6xl flex items-center justify-center mb-8 md:mb-16 z-10 px-4 reveal-up">
+             <div class="absolute inset-0 opacity-20 transition-colors duration-1000 blur-[100px] md:blur-[150px]" id="glow-bg" style="background-color: #00F2FE;"></div>
+             <img id="car-preview" src="./assets/car-base-cyan.png" alt="Config" class="w-[95%] md:w-[90%] lg:w-[75%] h-auto object-contain z-10 drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] md:drop-shadow-[0_40px_80px_rgba(0,0,0,1)] transition-all duration-500 hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1200&blend=00F2FE&blend-mode=multiply'">
+        </div>
+
+        <div class="flex gap-6 md:gap-12 z-20 reveal-up">
             <button onclick="changeColor('CYAN', '#00F2FE', './assets/car-base-cyan.png')" class="color-btn group relative">
-                <div class="w-16 h-16 rounded-full bg-[#00F2FE] border-4 border-white/10 transition-transform group-hover:scale-110"></div>
-                <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-futuristic text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">CYAN</span>
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#00F2FE] border-4 border-white/10 transition-transform group-hover:scale-110"></div>
+                <span class="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 font-futuristic text-[6px] md:text-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">CYAN</span>
             </button>
             <button onclick="changeColor('PURPLE', '#7F00FF', './assets/car-base-purple.png')" class="color-btn group relative">
-                <div class="w-16 h-16 rounded-full bg-[#7F00FF] border-4 border-white/10 transition-transform group-hover:scale-110"></div>
-                <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-futuristic text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">PURPLE</span>
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#7F00FF] border-4 border-white/10 transition-transform group-hover:scale-110"></div>
+                <span class="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 font-futuristic text-[6px] md:text-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">PURPLE</span>
             </button>
             <button onclick="changeColor('OBSIDIAN', '#222222', './assets/car-base-obsidian.png')" class="color-btn group relative">
-                <div class="w-16 h-16 rounded-full bg-[#222222] border-4 border-white/10 transition-transform group-hover:scale-110"></div>
-                <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-futuristic text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">OBSIDIAN</span>
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#222222] border-4 border-white/10 transition-transform group-hover:scale-110"></div>
+                <span class="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 font-futuristic text-[6px] md:text-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">OBSIDIAN</span>
             </button>
         </div>
     </section>
@@ -227,87 +255,87 @@
     <!-- 07: KINETIC SPECS -->
     <section id="specs-container" class="relative h-screen bg-obsidian overflow-hidden">
         <div id="specs-wrapper" class="flex h-full w-[300vw]">
-            <div class="spec-slide h-full w-screen flex flex-col items-center justify-center relative">
-                <span class="absolute text-[40rem] font-futuristic font-bold text-stroke opacity-5 select-none translate-y-20">0-100</span>
+            <div class="spec-slide h-full w-screen flex flex-col items-center justify-center relative px-4">
+                <span class="absolute text-[15rem] md:text-[40rem] font-futuristic font-bold text-stroke opacity-5 select-none translate-y-10 md:translate-y-20">0-100</span>
                 <div class="text-center z-10">
-                    <h4 class="font-futuristic text-neonCyan text-xl mb-4 tracking-[0.8em] reveal-up">VELOCITY</h4>
-                    <p class="font-futuristic text-[12rem] md:text-[18rem] font-bold tracking-tighter reveal-up">1.85<span class="text-4xl text-platinum/50 tracking-normal ml-6 italic">SEC</span></p>
+                    <h4 class="font-futuristic text-neonCyan text-base md:text-xl mb-4 tracking-[0.6em] md:tracking-[0.8em] reveal-up">VELOCITY</h4>
+                    <p class="font-futuristic text-6xl md:text-[12rem] lg:text-[18rem] font-bold tracking-tighter reveal-up">1.85<span class="text-xl md:text-4xl text-platinum/50 tracking-normal ml-4 md:ml-6 italic">SEC</span></p>
                 </div>
             </div>
-            <div class="spec-slide h-full w-screen flex flex-col items-center justify-center relative">
-                <span class="absolute text-[40rem] font-futuristic font-bold text-stroke opacity-5 select-none translate-y-20">TOP</span>
+            <div class="spec-slide h-full w-screen flex flex-col items-center justify-center relative px-4">
+                <span class="absolute text-[15rem] md:text-[40rem] font-futuristic font-bold text-stroke opacity-5 select-none translate-y-10 md:translate-y-20">TOP</span>
                 <div class="text-center z-10">
-                    <h4 class="font-futuristic text-cyberPurple text-xl mb-4 tracking-[0.8em] reveal-up">POTENTIAL</h4>
-                    <p class="font-futuristic text-[12rem] md:text-[18rem] font-bold tracking-tighter reveal-up">485<span class="text-4xl text-platinum/50 tracking-normal ml-6 italic">KM/H</span></p>
+                    <h4 class="font-futuristic text-cyberPurple text-base md:text-xl mb-4 tracking-[0.6em] md:tracking-[0.8em] reveal-up">POTENTIAL</h4>
+                    <p class="font-futuristic text-6xl md:text-[12rem] lg:text-[18rem] font-bold tracking-tighter reveal-up">485<span class="text-xl md:text-4xl text-platinum/50 tracking-normal ml-4 md:ml-6 italic">KM/H</span></p>
                 </div>
             </div>
-            <div class="spec-slide h-full w-screen flex flex-col items-center justify-center relative">
-                <span class="absolute text-[40rem] font-futuristic font-bold text-stroke opacity-5 select-none translate-y-20">AIR</span>
+            <div class="spec-slide h-full w-screen flex flex-col items-center justify-center relative px-4">
+                <span class="absolute text-[15rem] md:text-[40rem] font-futuristic font-bold text-stroke opacity-5 select-none translate-y-10 md:translate-y-20">AIR</span>
                 <div class="text-center z-10">
-                    <h4 class="font-futuristic text-white text-xl mb-4 tracking-[0.8em] reveal-up">AERO</h4>
-                    <p class="font-futuristic text-[12rem] md:text-[18rem] font-bold tracking-tighter reveal-up">0.19<span class="text-4xl text-platinum/50 tracking-normal ml-6 italic">CD</span></p>
+                    <h4 class="font-futuristic text-white text-base md:text-xl mb-4 tracking-[0.6em] md:tracking-[0.8em] reveal-up">AERO</h4>
+                    <p class="font-futuristic text-6xl md:text-[12rem] lg:text-[18rem] font-bold tracking-tighter reveal-up">0.19<span class="text-xl md:text-4xl text-platinum/50 tracking-normal ml-4 md:ml-6 italic">CD</span></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 08: TECHNICAL COMPENDIUM (NEW) -->
-    <section id="specs-table" class="relative min-h-screen w-full py-32 px-10 md:px-24 bg-obsidian border-t border-white/5">
+    <section id="specs-table" class="relative min-h-screen w-full py-16 md:py-32 px-6 md:px-10 lg:px-24 bg-obsidian border-t border-white/5">
         <div class="max-w-6xl mx-auto">
-            <h2 class="font-futuristic text-4xl mb-20 reveal-up">TECHNICAL <span class="text-neonCyan">COMPENDIUM</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-32 gap-y-12 reveal-up">
-                <div class="flex justify-between py-6 border-b border-white/5">
-                    <span class="font-futuristic text-[10px] text-white/40 uppercase">Powertrain</span>
-                    <span class="font-sans text-sm font-light">Quad-Motor Plasma Drive</span>
+            <h2 class="font-futuristic text-3xl md:text-4xl mb-12 md:mb-20 reveal-up">TECHNICAL <span class="text-neonCyan">COMPENDIUM</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 md:gap-x-32 gap-y-8 md:gap-y-12 reveal-up">
+                <div class="flex justify-between py-4 md:py-6 border-b border-white/5">
+                    <span class="font-futuristic text-[9px] md:text-[10px] text-white/40 uppercase">Powertrain</span>
+                    <span class="font-sans text-xs md:text-sm font-light">Quad-Motor Plasma Drive</span>
                 </div>
-                <div class="flex justify-between py-6 border-b border-white/5">
-                    <span class="font-futuristic text-[10px] text-white/40 uppercase">Horsepower</span>
-                    <span class="font-sans text-sm font-light">2,400 BHP</span>
+                <div class="flex justify-between py-4 md:py-6 border-b border-white/5">
+                    <span class="font-futuristic text-[9px] md:text-[10px] text-white/40 uppercase">Horsepower</span>
+                    <span class="font-sans text-xs md:text-sm font-light">2,400 BHP</span>
                 </div>
-                <div class="flex justify-between py-6 border-b border-white/5">
-                    <span class="font-futuristic text-[10px] text-white/40 uppercase">Range</span>
-                    <span class="font-sans text-sm font-light">850 KM (WLTP)</span>
+                <div class="flex justify-between py-4 md:py-6 border-b border-white/5">
+                    <span class="font-futuristic text-[9px] md:text-[10px] text-white/40 uppercase">Range</span>
+                    <span class="font-sans text-xs md:text-sm font-light">850 KM (WLTP)</span>
                 </div>
-                <div class="flex justify-between py-6 border-b border-white/5">
-                    <span class="font-futuristic text-[10px] text-white/40 uppercase">Battery</span>
-                    <span class="font-sans text-sm font-light">120 kWh Solid-State</span>
+                <div class="flex justify-between py-4 md:py-6 border-b border-white/5">
+                    <span class="font-futuristic text-[9px] md:text-[10px] text-white/40 uppercase">Battery</span>
+                    <span class="font-sans text-xs md:text-sm font-light">120 kWh Solid-State</span>
                 </div>
-                <div class="flex justify-between py-6 border-b border-white/5">
-                    <span class="font-futuristic text-[10px] text-white/40 uppercase">Weight</span>
-                    <span class="font-sans text-sm font-light">1,650 KG</span>
+                <div class="flex justify-between py-4 md:py-6 border-b border-white/5">
+                    <span class="font-futuristic text-[9px] md:text-[10px] text-white/40 uppercase">Weight</span>
+                    <span class="font-sans text-xs md:text-sm font-light">1,650 KG</span>
                 </div>
-                <div class="flex justify-between py-6 border-b border-white/5">
-                    <span class="font-futuristic text-[10px] text-white/40 uppercase">Wheelbase</span>
-                    <span class="font-sans text-sm font-light">2,950 MM</span>
+                <div class="flex justify-between py-4 md:py-6 border-b border-white/5">
+                    <span class="font-futuristic text-[9px] md:text-[10px] text-white/40 uppercase">Wheelbase</span>
+                    <span class="font-sans text-xs md:text-sm font-light">2,950 MM</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 09: SECURE ALLOCATION -->
-    <section id="preorder" class="relative min-h-screen w-full flex flex-col items-center justify-center p-10 bg-[#050505]">
-        <div class="max-w-4xl w-full text-center mb-24 reveal-up">
-            <h2 class="font-futuristic text-6xl md:text-9xl mb-8 leading-none tracking-tighter">FINALIZE THE<br><span class="text-neonCyan">MISSION</span></h2>
-            <p class="text-platinum/30 max-w-xl mx-auto font-light text-lg italic">The waiting list is curated based on legacy collection and racing history.</p>
+    <section id="preorder" class="relative min-h-screen w-full flex flex-col items-center justify-center p-6 md:p-10 bg-[#050505]">
+        <div class="max-w-4xl w-full text-center mb-16 md:mb-24 reveal-up">
+            <h2 class="font-futuristic text-4xl md:text-6xl lg:text-9xl mb-6 md:mb-8 leading-none tracking-tighter px-4">FINALIZE THE<br><span class="text-neonCyan">MISSION</span></h2>
+            <p class="text-platinum/30 max-w-xl mx-auto font-light text-sm md:text-lg italic px-4">The waiting list is curated based on legacy collection and racing history.</p>
         </div>
 
-        <form class="w-full max-w-2xl space-y-12 reveal-up">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <form class="w-full max-w-2xl space-y-8 md:space-y-12 px-4 reveal-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div class="relative overflow-hidden">
-                    <input type="text" placeholder="FULL IDENTITY" class="w-full bg-transparent border-b border-white/30 p-4 focus:border-neonCyan focus:bg-white/5 outline-none transition-all placeholder:text-white/40 font-futuristic text-[10px] uppercase tracking-widest">
+                    <input type="text" placeholder="FULL IDENTITY" class="w-full bg-transparent border-b border-white/30 p-3 md:p-4 focus:border-neonCyan focus:bg-white/5 outline-none transition-all placeholder:text-white/40 font-futuristic text-[9px] md:text-[10px] uppercase tracking-widest">
                 </div>
                 <div class="relative overflow-hidden">
-                    <input type="email" placeholder="ENCRYPTED EMAIL" class="w-full bg-transparent border-b border-white/30 p-4 focus:border-neonCyan focus:bg-white/5 outline-none transition-all placeholder:text-white/40 font-futuristic text-[10px] uppercase tracking-widest">
+                    <input type="email" placeholder="ENCRYPTED EMAIL" class="w-full bg-transparent border-b border-white/30 p-3 md:p-4 focus:border-neonCyan focus:bg-white/5 outline-none transition-all placeholder:text-white/40 font-futuristic text-[9px] md:text-[10px] uppercase tracking-widest">
                 </div>
             </div>
-            <button type="button" id="magnetic-btn" class="w-full h-24 bg-white text-black font-futuristic font-bold tracking-[0.5em] uppercase hover:bg-neonCyan transition-all flex items-center justify-center group overflow-hidden relative">
+            <button type="button" id="magnetic-btn" class="w-full h-16 md:h-24 bg-white text-black font-futuristic font-bold tracking-[0.3em] md:tracking-[0.5em] text-xs md:text-base uppercase hover:bg-neonCyan transition-all flex items-center justify-center group overflow-hidden relative">
                 <span class="relative z-10">SUBMIT ALLOCATION REQUEST</span>
             </button>
         </form>
 
-        <footer class="mt-40 pt-10 border-t border-white/5 w-full flex flex-col md:flex-row justify-between items-center opacity-20 text-[8px] font-futuristic uppercase tracking-[0.3em]">
-            <div>© 2026 VORTEX INDUSTRIES AG / ALL RIGHTS RESERVED.</div>
-            <div class="flex gap-12 mt-6 md:mt-0">
+        <footer class="mt-20 md:mt-40 pt-10 border-t border-white/5 w-full flex flex-col md:flex-row justify-between items-center opacity-20 text-[7px] md:text-[8px] font-futuristic uppercase tracking-[0.2em] md:tracking-[0.3em] px-4">
+            <div class="text-center md:text-left">© 2026 VORTEX INDUSTRIES AG / ALL RIGHTS RESERVED.</div>
+            <div class="flex gap-6 md:gap-12 mt-4 md:mt-0 justify-center">
                 <a href="#" class="hover:text-neonCyan">Protocol</a>
                 <a href="#" class="hover:text-neonCyan">Neural Policy</a>
                 <a href="#" class="hover:text-neonCyan">Mainframe</a>
