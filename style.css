@@ -43,3 +43,25 @@
             color: rgba(255, 255, 255, 0.4);
             opacity: 1;
         }
+
+        /* Mobile Menu Button Fixes */
+        #mobile-menu-btn {
+            position: relative;
+            z-index: 51;
+        }
+
+        #mobile-menu-close {
+            position: relative;
+            z-index: 52;
+        }
+
+        #mobile-menu {
+            z-index: 50;
+        }
+
+        #mobile-menu-close {
+            position: fixed !important;
+            top: 1.5rem !important;
+            right: 1.5rem !important;
+            z-index: 52 !important;
+        }
