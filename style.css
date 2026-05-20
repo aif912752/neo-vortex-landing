@@ -58,3 +58,10 @@
         #mobile-menu {
             z-index: 50;
         }
+
+        #mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 51;
+        }
