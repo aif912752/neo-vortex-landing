@@ -213,6 +213,13 @@ const initAnims = () => {
 
 window.onload = () => {
     preloadImages(); // Preload car images for smooth transitions
+    
+    // Initialize glow color
+    const glow = document.getElementById('glow-bg');
+    if (glow) {
+        glow.style.backgroundColor = '#00F2FE';
+    }
+    
     initThree();
     initCursor();
     initAnims();
