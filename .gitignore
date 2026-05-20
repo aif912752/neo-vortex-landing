@@ -1,0 +1,18 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ignore any local temporary files
+tmp/
+temp/
+*.log
