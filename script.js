@@ -224,8 +224,12 @@ const initMobileMenu = () => {
 
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
+            // Hide hamburger button when menu opens
+            mobileMenuBtn.style.display = 'none';
+
             mobileMenu.classList.remove('hidden');
             mobileMenu.classList.add('flex');
+
             gsap.fromTo(mobileMenu.children[1].children,
                 { y: 50, opacity: 0 },
                 { y: 0, opacity: 0.7, duration: 0.4, stagger: 0.1, ease: "power2.out" }
@@ -240,6 +244,9 @@ const initMobileMenu = () => {
                     mobileMenu.classList.add('hidden');
                     mobileMenu.classList.remove('flex');
                     mobileMenu.style.opacity = 1;
+
+                    // Show hamburger button again when menu closes
+                    mobileMenuBtn.style.display = 'block';
                 }
             });
         });
@@ -253,6 +260,9 @@ const initMobileMenu = () => {
                         mobileMenu.classList.add('hidden');
                         mobileMenu.classList.remove('flex');
                         mobileMenu.style.opacity = 1;
+
+                        // Show hamburger button again when menu closes
+                        mobileMenuBtn.style.display = 'block';
                     }
                 });
             });
