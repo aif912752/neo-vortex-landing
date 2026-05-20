@@ -222,6 +222,22 @@ const initMobileMenu = () => {
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
+    const closeMenu = () => {
+        gsap.to(mobileMenu, {
+            opacity: 0,
+            duration: 0.3,
+            onComplete: () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                mobileMenu.style.opacity = 1;
+
+                // Show hamburger button again when menu closes
+                mobileMenuBtn.style.visibility = 'visible';
+                mobileMenuBtn.style.pointerEvents = 'auto';
+            }
+        });
+    };
+
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
             // Hide hamburger button when menu opens
@@ -237,38 +253,12 @@ const initMobileMenu = () => {
             );
         });
 
-        mobileMenuClose.addEventListener('click', () => {
-            gsap.to(mobileMenu, {
-                opacity: 0,
-                duration: 0.3,
-                onComplete: () => {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex');
-                    mobileMenu.style.opacity = 1;
-
-                    // Show hamburger button again when menu closes
-                    mobileMenuBtn.style.visibility = 'visible';
-                    mobileMenuBtn.style.pointerEvents = 'auto';
-                }
-            });
-        });
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', closeMenu);
+        }
 
         mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                gsap.to(mobileMenu, {
-                    opacity: 0,
-                    duration: 0.3,
-                    onComplete: () => {
-                        mobileMenu.classList.add('hidden');
-                        mobileMenu.classList.remove('flex');
-                        mobileMenu.style.opacity = 1;
-
-                        // Show hamburger button again when menu closes
-                        mobileMenuBtn.style.visibility = 'visible';
-                        mobileMenuBtn.style.pointerEvents = 'auto';
-                    }
-                });
-            });
+            link.addEventListener('click', closeMenu);
         });
     }
 };
