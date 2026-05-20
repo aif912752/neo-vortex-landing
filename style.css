@@ -1,0 +1,41 @@
+        * { cursor: none !important; }
+        html, body { margin: 0; background: #050505; color: #EAEAEA; overflow-x: hidden; }
+        
+        /* Cinematic Film Grain Overlay */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05; pointer-events: none; z-index: 100;
+        }
+
+        /* Custom Cursor */
+        #cursor-dot { width: 6px; height: 6px; background: #00F2FE; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+        #cursor-frame { width: 40px; height: 40px; border: 1px solid rgba(0, 242, 254, 0.5); position: fixed; pointer-events: none; z-index: 9998; transition: transform 0.1s ease-out; display: flex; align-items: center; justify-content: center; }
+        
+        /* Typography */
+        .text-stroke { -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1); color: transparent; }
+        .text-reveal-char { display: inline-block; transform: translateY(110%); }
+        .clip-path-reveal { clip-path: inset(0 0 100% 0); }
+
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        
+        .section-title { font-size: clamp(2rem, 8vw, 10rem); line-height: 0.9; }
+
+        /* Lenis Smooth Scroll Styles */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        /* Form Styling Fixes */
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            opacity: 1;
+        }
