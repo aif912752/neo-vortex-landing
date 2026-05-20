@@ -60,8 +60,10 @@
         }
 
         #mobile-menu-close {
-            position: fixed !important;
+            position: absolute !important;
             top: 1.5rem !important;
             right: 1.5rem !important;
             z-index: 52 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
         }
