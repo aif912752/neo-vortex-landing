@@ -65,3 +65,7 @@
             right: 1.5rem;
             z-index: 51;
         }
+
+        #glow-bg {
+            z-index: 5;
+        }
