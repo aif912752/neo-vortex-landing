@@ -2,6 +2,9 @@
 
 A cinematic, Awwwards-style interactive landing page prototype for a next-generation electric hypercar. 
 
+## 🔗 Live Demo
+**[View Live Site](https://aif912752.github.io/neo-vortex-landing/)**
+
 ## 🌟 Features
 - **Cinematic Hero**: Video background with seamless looping and custom typography.
 - **Smooth Scrolling**: Powered by [Lenis](https://lenis.studiofreight.com/) for buttery smooth navigation.
