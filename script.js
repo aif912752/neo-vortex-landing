@@ -225,7 +225,8 @@ const initMobileMenu = () => {
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
             // Hide hamburger button when menu opens
-            mobileMenuBtn.style.display = 'none';
+            mobileMenuBtn.style.visibility = 'hidden';
+            mobileMenuBtn.style.pointerEvents = 'none';
 
             mobileMenu.classList.remove('hidden');
             mobileMenu.classList.add('flex');
@@ -246,7 +247,8 @@ const initMobileMenu = () => {
                     mobileMenu.style.opacity = 1;
 
                     // Show hamburger button again when menu closes
-                    mobileMenuBtn.style.display = 'block';
+                    mobileMenuBtn.style.visibility = 'visible';
+                    mobileMenuBtn.style.pointerEvents = 'auto';
                 }
             });
         });
@@ -262,7 +264,8 @@ const initMobileMenu = () => {
                         mobileMenu.style.opacity = 1;
 
                         // Show hamburger button again when menu closes
-                        mobileMenuBtn.style.display = 'block';
+                        mobileMenuBtn.style.visibility = 'visible';
+                        mobileMenuBtn.style.pointerEvents = 'auto';
                     }
                 });
             });
