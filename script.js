@@ -72,7 +72,10 @@ window.changeColor = (name, hex, imgPath) => {
                 img.src = imgPath;
                 title.innerText = name;
                 title.style.color = hex;
-                gsap.to(glow, { backgroundColor: hex, duration: 0.5 });
+                
+                // Update glow color - remove inline style and use CSS variable or direct style
+                glow.style.backgroundColor = hex;
+                gsap.to(glow, { duration: 0.5 });
 
                 // Fade in with smooth easing
                 gsap.to(img, {
@@ -97,7 +100,8 @@ window.changeColor = (name, hex, imgPath) => {
                 img.src = `https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1200&blend=${hex.replace('#', '')}&blend-mode=multiply`;
                 title.innerText = name;
                 title.style.color = hex;
-                gsap.to(glow, { backgroundColor: hex, duration: 0.5 });
+                glow.style.backgroundColor = hex;
+                gsap.to(glow, { duration: 0.5 });
                 gsap.to(img, {
                     opacity: 1,
                     scale: 1,
