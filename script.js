@@ -38,18 +38,77 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 /* --- CONFIGURATOR --- */
+// Preload all car images on page load
+const carImages = {
+    'CYAN': './assets/car-base-cyan.png',
+    'PURPLE': './assets/car-base-purple.png',
+    'OBSIDIAN': './assets/car-base-obsidian.png'
+};
+
+// Preload function
+const preloadImages = () => {
+    Object.values(carImages).forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+};
+
 window.changeColor = (name, hex, imgPath) => {
     const img = document.getElementById('car-preview');
     const title = document.getElementById('color-name');
     const glow = document.getElementById('glow-bg');
-    
-    gsap.to(img, { opacity: 0, scale: 0.95, duration: 0.3, onComplete: () => {
-        img.src = imgPath;
-        title.innerText = name;
-        title.style.color = hex;
-        glow.style.backgroundColor = hex;
-        gsap.to(img, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" });
-    }});
+
+    // Preload the new image first
+    const tempImg = new Image();
+
+    tempImg.onload = () => {
+        // Image loaded successfully, now animate the transition
+        gsap.to(img, {
+            opacity: 0,
+            scale: 0.98,
+            duration: 0.25,
+            ease: "power2.in",
+            onComplete: () => {
+                img.src = imgPath;
+                title.innerText = name;
+                title.style.color = hex;
+                gsap.to(glow, { backgroundColor: hex, duration: 0.5 });
+
+                // Fade in with smooth easing
+                gsap.to(img, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+            }
+        });
+    };
+
+    tempImg.onerror = () => {
+        // Image doesn't exist, use fallback
+        console.warn(`Image not found: ${imgPath}, using fallback`);
+        gsap.to(img, {
+            opacity: 0,
+            scale: 0.98,
+            duration: 0.25,
+            ease: "power2.in",
+            onComplete: () => {
+                img.src = `https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1200&blend=${hex.replace('#', '')}&blend-mode=multiply`;
+                title.innerText = name;
+                title.style.color = hex;
+                gsap.to(glow, { backgroundColor: hex, duration: 0.5 });
+                gsap.to(img, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+            }
+        });
+    };
+
+    tempImg.src = imgPath;
 };
 
 /* --- THREE.JS PARTICLES --- */
@@ -117,8 +176,8 @@ const initAnims = () => {
         });
     });
 
-    // Aero Img Floating
-    gsap.to(".aero-img", { y: -30, duration: 3, repeat: -1, yoyo: true, ease: "sine.inOut" });
+    // Aero Video Floating
+    gsap.to(".aero-visual", { y: -30, duration: 3, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
     // Horizontal Specs
     const specsWrapper = document.querySelector("#specs-wrapper");
@@ -146,6 +205,7 @@ const initAnims = () => {
 };
 
 window.onload = () => {
+    preloadImages(); // Preload car images for smooth transitions
     initThree();
     initCursor();
     initAnims();
